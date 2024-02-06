@@ -35,6 +35,7 @@ export const Header = styled.header`
   }
 
   .Navlink {
+    cursor: pointer;
     text-decoration: none;
     font-weight: 400;
     font-size: 16px;

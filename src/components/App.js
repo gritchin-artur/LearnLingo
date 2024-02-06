@@ -1,5 +1,6 @@
 import Layout from "components/layout/layout";
 import GlobalStyled from "createGlobalStyle/createGlobalStyle.styled";
+import { HomePage } from "pages/homePage/homePage";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -13,7 +14,15 @@ export const App = () => {
       <Suspense fallback={<p>Загружаем...</p>}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index exact element={<PublicRoute></PublicRoute>} />
+            <Route
+              index
+              exact
+              element={
+                // <PublicRoute>
+                <HomePage />
+                // </PublicRoute>
+              }
+            />
             <Route path="teachers" element={<PrivateRoute></PrivateRoute>} />
             <Route path="favorites" element={<PrivateRoute></PrivateRoute>} />
             <Route path="*" element={<Navigate to="/" />} />

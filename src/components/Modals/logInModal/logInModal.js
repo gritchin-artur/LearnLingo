@@ -25,6 +25,8 @@ export function LogInModal({ handleClickClose }) {
     validationSchema: SigninSchema,
 
     onSubmit: (values) => {
+      console.log(!isValid);
+      handleClickClose();
       // dispatch(saveSignUpForm(values));
       // onNext();
     },

@@ -14,6 +14,7 @@ export const ModalContainer = styled.div`
   transform: rotate(-0deg);
 
   .CloseButton {
+    cursor: pointer;
     position: absolute;
     right: 20px;
     top: 20px;

@@ -24,50 +24,52 @@ function Layout() {
   };
 
   return (
-    <Header>
-      <div className="UserDiv">
-        <span className="UserIcon" /> LearnLingo
-      </div>
-      <ul className="Ul">
-        <li>
-          <NavLink className="Navlink" to="/">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="Navlink" to="/teachers">
-            Teachers
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="Navlink" to="/favorites">
-            Favorites
-          </NavLink>
-        </li>
-      </ul>
-      <div className="LogInContainer">
-        <button
-          className=" LogInButton"
-          id="login"
-          onClick={() => handleOpenModal("login")}
-        >
-          <LogInImg />
-          Log in
-        </button>
+    <div>
+      <Header>
+        <div className="UserDiv">
+          <span className="UserIcon" /> LearnLingo
+        </div>
+        <ul className="Ul">
+          <li>
+            <NavLink className="Navlink" to="/">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="Navlink" to="/teachers">
+              Teachers
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="Navlink" to="/favorites">
+              Favorites
+            </NavLink>
+          </li>
+        </ul>
+        <div className="LogInContainer">
+          <button
+            className=" LogInButton"
+            id="login"
+            onClick={() => handleOpenModal("login")}
+          >
+            <LogInImg />
+            Log in
+          </button>
 
-        <button
-          id="register"
-          className="RegisterButton"
-          onClick={() => handleOpenModal("register")}
-        >
-          Registration
-        </button>
-      </div>
-      {(isModalLogIn || isModalRegister) && <Modal />}
+          <button
+            id="register"
+            className="RegisterButton"
+            onClick={() => handleOpenModal("register")}
+          >
+            Registration
+          </button>
+        </div>
+        {(isModalLogIn || isModalRegister) && <Modal />}
+      </Header>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </Header>
+    </div>
   );
 }
 
