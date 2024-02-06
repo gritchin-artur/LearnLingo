@@ -1,30 +1,73 @@
-const { Suspense } = require("react");
-const { NavLink, Outlet } = require("react-router-dom");
+import { NavLink, Outlet } from "react-router-dom";
+import { ReactComponent as LogInImg } from "../../img/log-in-01.svg";
+import { Header } from "./layout.styled";
+import { Suspense } from "react";
+import { useDispatch } from "react-redux";
+import {
+  openModalRegister,
+  openModalLogIn,
+} from "../../redux/modals/modal-slice";
+import { Modal } from "components/Modals/Modals";
+import { useModal } from "hooks/useModal";
 
 function Layout() {
+  const { isModalLogIn, isModalRegister } = useModal();
+  const dispatch = useDispatch();
+
+  const handleOpenModal = (id) => {
+    if (id === "register") {
+      return dispatch(openModalRegister());
+    }
+    if (id === "login") {
+      return dispatch(openModalLogIn());
+    }
+  };
+
   return (
-    <div>
-      <ul>
+    <Header>
+      <div className="UserDiv">
+        <span className="UserIcon" /> LearnLingo
+      </div>
+      <ul className="Ul">
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink className="Navlink" to="/">
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/teachers">Teachers</NavLink>
+          <NavLink className="Navlink" to="/teachers">
+            Teachers
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/favorites">Favorites</NavLink>
-        </li>
-        <li>
-          <NavLink to="/register">Log in</NavLink>
-        </li>
-        <li>
-          <NavLink to="/register">Sing up</NavLink>
+          <NavLink className="Navlink" to="/favorites">
+            Favorites
+          </NavLink>
         </li>
       </ul>
+      <div className="LogInContainer">
+        <button
+          className=" LogInButton"
+          id="login"
+          onClick={() => handleOpenModal("login")}
+        >
+          <LogInImg />
+          Log in
+        </button>
+
+        <button
+          id="register"
+          className="RegisterButton"
+          onClick={() => handleOpenModal("register")}
+        >
+          Registration
+        </button>
+      </div>
+      {(isModalLogIn || isModalRegister) && <Modal />}
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </Header>
   );
 }
 
