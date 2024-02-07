@@ -1,16 +1,28 @@
 import Layout from "components/layout/layout";
 import GlobalStyled from "createGlobalStyle/createGlobalStyle.styled";
 import { HomePage } from "pages/homePage/homePage";
-import { Suspense } from "react";
+import { Teachers } from "pages/teachers/teachers";
+import { Suspense, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import PrivateRoute from "routes/PrivatRoute/privatRoute";
 import PublicRoute from "routes/PublicRoute/publicRoute";
 
 export const App = () => {
+  const location = useLocation();
+  const [backgroundColor, setBackgroundColor] = useState("");
+
+  useEffect(() => {
+    if (location.pathname.includes("/teachers")) {
+      setBackgroundColor("#f8f8f8");
+    } else {
+      setBackgroundColor("#fff");
+    }
+  }, [location]);
+
   return (
     <>
-      <GlobalStyled />
+      <GlobalStyled backgroundColor={backgroundColor} />
       <Suspense fallback={<p>Загружаем...</p>}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -23,7 +35,14 @@ export const App = () => {
                 // </PublicRoute>
               }
             />
-            <Route path="teachers" element={<PrivateRoute></PrivateRoute>} />
+            <Route
+              path="teachers"
+              element={
+                // <PrivateRoute>
+                <Teachers />
+                // </PrivateRoute>
+              }
+            />
             <Route path="favorites" element={<PrivateRoute></PrivateRoute>} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route

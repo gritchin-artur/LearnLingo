@@ -1,6 +1,31 @@
+import { NavLink } from "react-router-dom";
 import { Body } from "./homePage.styled";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useEffect, useState } from "react";
+// import { getTeachers } from "../../redux/data/data-selectors";
 
 export function HomePage() {
+  // const dispatch = useDispatch();
+
+  //   const isLoading = useSelector((state) => state.teachers.isLoading);
+  //   const teachers = useSelector((state) => state.teachers.teachers);
+  //   const favoriteList = useSelector((state) => state.favorite.favorite);
+
+  // const [loadedTeachersCount, setLoadedTeachersCount] = useState(4);
+
+  //   const favoriteTeacher = teachers?.filter((el) =>
+  //     favoriteList.includes(el.id)
+  //   );
+
+  // useEffect(() => {
+  //   dispatch(getTeachers());
+  //   console.log(getTeachers());
+  // }, [dispatch]);
+
+  // const handleLoadMore = () => {
+  //   setLoadedTeachersCount((prevCount) => prevCount + 4);
+  // };
+
   return (
     <Body>
       <div className="StartContainer">
@@ -13,7 +38,9 @@ export function HomePage() {
           Elevate your language proficiency to new heights by connecting with
           highly qualified and experienced tutors.
         </p>
-        <button className="ButtonGetStart">Get started</button>
+        <NavLink to="/teachers" className="ButtonGetStart">
+          Get started
+        </NavLink>
       </div>
 
       <div className="Img" />

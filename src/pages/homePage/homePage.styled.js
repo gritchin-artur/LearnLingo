@@ -68,7 +68,10 @@ export const Body = styled.div`
     width: 267px;
     height: 60px;
     background: #8a8a89;
-    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     margin-top: 60px;
 
     font-weight: 700;
