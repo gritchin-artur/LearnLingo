@@ -46,11 +46,13 @@ export const TeachersContainer = styled.div`
     gap: 48px;
     border-radius: 24px;
     padding: 24px;
-    /* width: 1184px;
-    height: 328px; */
     background: #fff;
 
     box-sizing: border-box;
+  }
+
+  .ContentContainer {
+    display: ruby;
   }
 
   .AvatarContainer {
@@ -234,5 +236,33 @@ export const TeachersContainer = styled.div`
   .ReviewElement {
     display: grid;
     gap: 16px;
+  }
+
+  .ButtonBookLesson {
+    margin-top: 32px;
+    border-radius: 12px;
+    width: 232px;
+    height: 60px;
+    background: #f4c550;
+    border: none;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: #121417;
+  }
+
+  .ButtonLoadMore {
+    border-radius: 12px;
+    width: 183px;
+    height: 60px;
+    background: #f4c550;
+    border: none;
+    margin-top: 60px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: #121417;
   }
 `;
