@@ -13,19 +13,19 @@ export function Teachers() {
 
   const isLoading = useSelector((state) => state.teachers.isLoading);
   const teachers = useSelector((state) => state.teachers.teachers);
-  const favoriteList = useSelector((state) => state.favorite.favorite);
+  // const favoriteList = useSelector((state) => state.favorite.favorite);
 
   const [loadedTeachersCount, setLoadedTeachersCount] = useState(4);
   const [showTextWindow, setShowTextWindow] = useState(
     Array(teachers.length).fill(false)
   );
-  const [languages, setLanguages] = useState(" ");
-  const [level, setLevel] = useState(" ");
-  const [price, setPrice] = useState(" ");
+  // const [languages, setLanguages] = useState(" ");
+  // const [level, setLevel] = useState(" ");
+  // const [price, setPrice] = useState(" ");
 
-  const favoriteTeacher = teachers?.filter((el) =>
-    favoriteList.includes(el.id)
-  );
+  // const favoriteTeacher = teachers?.filter((el) =>
+  //   favoriteList.includes(el.id)
+  // );
 
   useEffect(() => {
     dispatch(getTeachers());
