@@ -10,15 +10,13 @@ li {
   text-decoration: none;
 }
 
-
-h2 {
-
+ul,
+h2,
+h3,
+p{
+  margin: 0;
+  padding: 0;
 }
-
-h3{
-
-}
-
 
 body {
   margin: 0;

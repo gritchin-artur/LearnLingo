@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTeachers } from "./data-selectors";
+import { getTeachers } from "./data-operation";
 
 const initialState = {
   teachers: [],

@@ -1,5 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { modalReducer } from "./modals/modal-slice";
+import teachersReducer from "./data/data-slise";
+import favoriteReduser from "./data/favorite-slise";
 import {
   persistStore,
   FLUSH,
@@ -11,6 +13,8 @@ import {
 } from "redux-persist";
 
 const rootReducer = combineReducers({
+  teachers: teachersReducer,
+  favorite: favoriteReduser,
   modal: modalReducer,
 });
 
