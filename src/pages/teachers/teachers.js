@@ -9,7 +9,6 @@ export function Teachers() {
 
   const isLoading = useSelector((state) => state.teachers.isLoading);
   const teachers = useSelector((state) => state.teachers.teachers);
-  // const favoriteList = useSelector((state) => state.favorite.favorite);
 
   const [loadedTeachersCount, setLoadedTeachersCount] = useState(4);
   const [languages, setLanguages] = useState("");
@@ -126,7 +125,7 @@ export function Teachers() {
           )}
         </ul>
         {filteredTeachers.length > loadedTeachersCount && (
-          <div className="ButtonLoadMoreConyainer">
+          <div className="ButtonLoadMoreContainer">
             <button className="ButtonLoadMore" onClick={handleLoadMore}>
               Load more
             </button>

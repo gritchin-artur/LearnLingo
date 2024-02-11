@@ -1,14 +1,16 @@
 import { ReactComponent as OpenBook } from "../../img/book-open.svg";
 import { ReactComponent as Star } from "../../img/star.svg";
-import { ReactComponent as Heart } from "../../img/heartsvg.svg";
 import { ReactComponent as Group } from "../../img/Group.svg";
 import { ReactComponent as UkraineImg } from "../../img/ukraine.svg";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useCallback, useEffect, useState } from "react";
 import { TeacherCard } from "./teachersList.styled";
+import { addFavorite, removeFavorite } from "../../redux/data/favorite-slise";
 
 export default function TeachersList({ index, teacher }) {
+  const dispatch = useDispatch();
   const teachers = useSelector((state) => state.teachers.teachers);
+  const favoriteList = useSelector((state) => state.favorite.favorite);
 
   const [showTextWindow, setShowTextWindow] = useState(
     Array(teachers.length).fill(false)
@@ -21,35 +23,25 @@ export default function TeachersList({ index, teacher }) {
     console.log(teachers);
   };
 
-  const [favorites, setFavorites] = useState(
-    JSON.parse(localStorage.getItem("teachers")) ?? []
-  );
-  const [buttonColors, setButtonColors] = useState(
-    JSON.parse(localStorage.getItem("color")) ?? Array(teachers.length)
-  );
+  const isElementInArray = favoriteList.includes(teacher);
 
-  useEffect(() => {
-    localStorage.setItem("teachers", JSON.stringify(favorites));
-    localStorage.setItem("color", JSON.stringify(buttonColors));
-  }, [favorites, buttonColors]);
+  // const handleIconClick = useCallback(
+  //   (teacher) => {
+  //     if (!isElementInArray) {
+  //       return dispatch(addFavorite(teacher));
+  //     } else {
+  //       return dispatch(removeFavorite(teacher));
+  //     }
+  //   },
+  //   [dispatch, isElementInArray]
+  // );
 
-  const handleIconClick = (teacher, index) => {
-    setButtonColors((prevColors) => {
-      const newColors = [...prevColors];
-      newColors[index] = newColors[index] === "#f4c550" ? "" : "#f4c550";
-
-      setFavorites((prevFavorites) => {
-        if (newColors[index] === "#f4c550") {
-          return [...prevFavorites, teacher];
-        } else {
-          return prevFavorites.filter(
-            (item) => item.iavatar_url !== teacher.avatar_url
-          );
-        }
-      });
-
-      return newColors;
-    });
+  const handleIconClick = (teacher) => {
+    if (!isElementInArray) {
+      return dispatch(addFavorite(teacher));
+    } else {
+      return dispatch(removeFavorite(teacher));
+    }
   };
 
   return (
@@ -82,12 +74,22 @@ export default function TeachersList({ index, teacher }) {
               <span className="Price">{teacher.price_per_hour}$</span>
             </h3>
           </div>
-          <Heart
+          <svg
             className="Heart"
-            onClick={() => handleIconClick(teacher, teacher.avatar_url)}
-            fill={buttonColors[teacher.avatar_url] || "none"}
-            // stroke={buttonColors[teacher.avatar_url] || "#f4c550"}
-          />
+            onClick={() => handleIconClick(teacher, teacher.lessons_done)}
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            fill={isElementInArray ? "#f4c550" : "none"}
+          >
+            <path
+              stroke={isElementInArray ? "#f4c550" : "#121417"}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M22.577 4.994a5.959 5.959 0 0 0-8.429 0L13 6.143l-1.148-1.149a5.96 5.96 0 0 0-8.429 8.428l1.149 1.149L13 22.999l8.428-8.428 1.149-1.149a5.96 5.96 0 0 0 0-8.428Z"
+            />
+          </svg>
         </div>
         <h2 className="TeacherName">
           {teacher.name} {teacher.surname}

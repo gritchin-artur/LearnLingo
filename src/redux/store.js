@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { modalReducer } from "./modals/modal-slice";
 import teachersReducer from "./data/data-slise";
 import favoriteReduser from "./data/favorite-slise";
+import storage from "redux-persist/lib/storage";
 import {
   persistStore,
   FLUSH,
@@ -10,7 +11,15 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
+  persistReducer,
 } from "redux-persist";
+
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+  whitelist: ["favorite", "modal", "teachers"],
+};
 
 const rootReducer = combineReducers({
   teachers: teachersReducer,
@@ -18,8 +27,10 @@ const rootReducer = combineReducers({
   modal: modalReducer,
 });
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

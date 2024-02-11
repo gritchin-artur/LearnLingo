@@ -55,7 +55,7 @@ export const TeachersContainer = styled.div`
     color: #121417;
   }
 
-  .ButtonLoadMoreConyainer {
+  .ButtonLoadMoreContainer {
     display: flex;
     justify-content: center;
     align-items: center;

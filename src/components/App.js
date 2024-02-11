@@ -1,5 +1,6 @@
 import Layout from "components/layout/layout";
 import GlobalStyled from "createGlobalStyle/createGlobalStyle.styled";
+import Favorite from "pages/favorites/favorites";
 import { HomePage } from "pages/homePage/homePage";
 import { Teachers } from "pages/teachers/teachers";
 import { Suspense, useEffect, useState } from "react";
@@ -13,7 +14,10 @@ export const App = () => {
   const [backgroundColor, setBackgroundColor] = useState("");
 
   useEffect(() => {
-    if (location.pathname.includes("/teachers")) {
+    if (
+      location.pathname.includes("/teachers") ||
+      location.pathname.includes("/favorites")
+    ) {
       setBackgroundColor("#f8f8f8");
     } else {
       setBackgroundColor("#fff");
@@ -43,7 +47,14 @@ export const App = () => {
                 // </PrivateRoute>
               }
             />
-            <Route path="favorites" element={<PrivateRoute></PrivateRoute>} />
+            <Route
+              path="favorites"
+              element={
+                // <PrivateRoute>
+                <Favorite />
+                // </PrivateRoute>
+              }
+            />
             <Route path="*" element={<Navigate to="/" />} />
             <Route
               path="register"
