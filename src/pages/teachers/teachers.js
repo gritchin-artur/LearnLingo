@@ -2,11 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TeachersContainer } from "./teachers.styled";
 import { useEffect, useState } from "react";
 import { getTeachers } from "../../redux/data/data-operation";
-import { ReactComponent as OpenBook } from "../../img/book-open.svg";
-import { ReactComponent as Star } from "../../img/star.svg";
-import { ReactComponent as Heart } from "../../img/heartsvg.svg";
-import { ReactComponent as Group } from "../../img/Group.svg";
-import { ReactComponent as UkraineImg } from "../../img/ukraine.svg";
+import TeachersList from "pages/teachersList/teachersList";
 
 export function Teachers() {
   const dispatch = useDispatch();
@@ -16,16 +12,9 @@ export function Teachers() {
   // const favoriteList = useSelector((state) => state.favorite.favorite);
 
   const [loadedTeachersCount, setLoadedTeachersCount] = useState(4);
-  const [showTextWindow, setShowTextWindow] = useState(
-    Array(teachers.length).fill(false)
-  );
-  // const [languages, setLanguages] = useState(" ");
-  // const [level, setLevel] = useState(" ");
-  // const [price, setPrice] = useState(" ");
-
-  // const favoriteTeacher = teachers?.filter((el) =>
-  //   favoriteList.includes(el.id)
-  // );
+  const [languages, setLanguages] = useState("");
+  const [level, setLevel] = useState("");
+  const [price, setPrice] = useState("");
 
   useEffect(() => {
     dispatch(getTeachers());
@@ -35,12 +24,15 @@ export function Teachers() {
     setLoadedTeachersCount((prevCount) => prevCount + 4);
   };
 
-  const handleReadMore = (index) => {
-    const newShowTextWindow = [...showTextWindow];
-    newShowTextWindow[index] = true;
-    setShowTextWindow(newShowTextWindow);
-    console.log(loadedTeachersCount);
-  };
+  const filteredTeachers = teachers.filter((teacher) => {
+    const languageFilterResult =
+      !languages || teacher.languages.includes(languages);
+    const levelFilterResult = !level || teacher.levels.includes(level);
+    const priceFilterResult =
+      !price || `${Math.round(teacher.price_per_hour / 10) * 10}` === price;
+
+    return languageFilterResult && levelFilterResult && priceFilterResult;
+  });
 
   return (
     <TeachersContainer>
@@ -49,12 +41,21 @@ export function Teachers() {
           <label className="Label" htmlFor="languages">
             Languages
           </label>
-          <select className="Select" id="languages" name="languages">
-            <option value="french">French</option>
-            <option value="english">English</option>
-            <option value="german">German</option>
-            <option value="ukrainian">Ukrainian</option>
-            <option value="polish">Polish</option>
+          <select
+            className="Select"
+            id="languages"
+            name="languages"
+            onChange={(e) => setLanguages(e.target.value)}
+            value={languages}
+          >
+            <option value="French">French</option>
+            <option value="English">English</option>
+            <option value="German">German</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Italian">Italian</option>
+            <option value="Korean">Korean</option>
+            <option value="Mandarin Chinese">Mandarin Chinese</option>
+            <option value="Vietnamese">Vietnamese</option>
           </select>
         </div>
 
@@ -66,11 +67,15 @@ export function Teachers() {
             className="Select"
             id="levelOfKnowledge"
             name="levelOfKnowledge"
+            onChange={(e) => setLevel(e.target.value)}
+            value={level}
           >
-            <option value="a1Beginner">A1 Beginner</option>
-            <option value="a2Elementary">A2 Elementary</option>
-            <option value="b2Intermediate">B1 Intermediate</option>
-            <option value="b2Upper-Intermediate">B2 Upper-Intermediate</option>
+            <option value="A1 Beginner">A1 Beginner</option>
+            <option value="A2 Elementary">A2 Elementary</option>
+            <option value="B1 Intermediate">B1 Intermediate</option>
+            <option value="B2 Upper-Intermediate">B2 Upper-Intermediate</option>
+            <option value="C1 Advanced">C1 Advanced</option>
+            <option value="C2 Proficient">C2 Proficient</option>
           </select>
         </div>
 
@@ -78,148 +83,54 @@ export function Teachers() {
           <label className="Label" htmlFor="price">
             Price
           </label>
-          <select className="Select" id="price" name="price">
-            <option value="10$">10 $</option>
-            <option value="20$">20 $</option>
-            <option value="30$">30 $</option>
-            <option value="40$">40 $</option>
-            <option value="50$">50 $</option>
-            <option value="60$">60 $</option>
-            <option value="70$">70 $</option>
-            <option value="80$">80 $</option>
-            <option value="90$">90 $</option>
-            <option value="100$">100 $</option>
+          <select
+            className="Select"
+            id="price"
+            name="price"
+            onChange={(e) => setPrice(e.target.value)}
+            value={price}
+          >
+            <option value="10">10 $</option>
+            <option value="20">20 $</option>
+            <option value="30">30 $</option>
+            <option value="40">40 $</option>
+            <option value="50">50 $</option>
+            <option value="60">60 $</option>
+            <option value="70">70 $</option>
+            <option value="80">80 $</option>
+            <option value="90">90 $</option>
+            <option value="100">100 $</option>
           </select>
         </div>
       </form>
 
       <div className="ContentContainer">
         <ul className="TeachersList">
+          {!filteredTeachers.length && (
+            <h2>
+              You must be enter incorrect value! Please try enather value!
+            </h2>
+          )}
           {isLoading ? (
-            <div>Loading...</div>
+            <h2>Loading...</h2>
           ) : (
-            teachers
-              .map((teacher, index) => (
-                <li key={index} className="TeacherCard">
-                  <div className="AvatarContainer">
-                    <Group className="Group" />
-                    <img
-                      className="Avatar"
-                      alt={teacher.name}
-                      src={teacher.avatar_url}
-                    />
-                  </div>
-                  <div className="ContentContainer">
-                    <div className="HeaderCard">
-                      <p className="Languages">Languages</p>
-
-                      <div className="TeacherQuatyContainer">
-                        <h3 className="TeacherQuaty">
-                          <OpenBook />
-                          Lessons online
-                        </h3>
-                        <p className="Border">|</p>
-                        <h3 className="TeacherQuaty">
-                          Lessons done: {teacher.lessons_done}
-                        </h3>
-                        <p className="Border">|</p>
-                        <h3 className="TeacherQuaty">
-                          <Star />
-                          Rating: {teacher.rating}
-                        </h3>
-                        <p className="Border">|</p>
-                        <h3 className="TeacherQuaty">
-                          Price / 1 hour:
-                          <span className="Price">
-                            {teacher.price_per_hour}$
-                          </span>
-                        </h3>
-                      </div>
-                      <Heart className="Heart" />
-                    </div>
-                    <h2 className="TeacherName">
-                      {teacher.name} {teacher.surname}
-                    </h2>
-                    <div className="TeacherDescription">
-                      <p className="Speaks">
-                        Speaks:
-                        <span className="SpeaksText">
-                          {teacher.languages[0]}, {teacher.languages[1]}
-                        </span>
-                      </p>
-                      <p className="Speaks">
-                        Lesson Info:{" "}
-                        <span className="LessonText">
-                          {teacher.lesson_info}
-                        </span>
-                      </p>
-                      <p className="Speaks">
-                        Conditions:{" "}
-                        <span className="LessonText">
-                          {teacher.conditions[0]}, {teacher.conditions[1]}
-                        </span>
-                      </p>
-
-                      {!showTextWindow[index] && (
-                        <button
-                          className="ButtonReadMore"
-                          onClick={() => handleReadMore(index)}
-                        >
-                          Read more
-                        </button>
-                      )}
-                      {showTextWindow[index] && (
-                        <div>
-                          <p className="TeacherText">{teacher.experience}</p>
-                          <ul className="ReviewList">
-                            {teacher.reviews.map((review, index) => (
-                              <li key={index} className="ReviewElement">
-                                <div className="ReviewContainer">
-                                  <UkraineImg className="DefaultAvatar" />
-                                  <div>
-                                    <p className="ReviewName">
-                                      {review.reviewer_name}
-                                    </p>
-                                    <p className="ReviewRaring">
-                                      <Star />
-                                      {review.reviewer_rating}.0
-                                    </p>
-                                  </div>
-                                </div>
-                                <p>{review.comment}</p>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      <ul className="LevelList">
-                        {teacher.levels.map((level, index) => (
-                          <li
-                            className={`Level ${
-                              index === 0 ? "YellowBackground" : ""
-                            }`}
-                            key={index}
-                          >
-                            #{level}
-                          </li>
-                        ))}
-                      </ul>
-                      {showTextWindow[index] && (
-                        <button className="ButtonBookLesson">
-                          Book trial lesson
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </li>
-              ))
+            filteredTeachers
               .slice(0, loadedTeachersCount)
+              .map((teacher, index) => (
+                <TeachersList
+                  key={index}
+                  teacher={teacher}
+                  filteredTeachers={filteredTeachers}
+                />
+              ))
           )}
         </ul>
-        {teachers.length > loadedTeachersCount && (
-          <button className="ButtonLoadMore" onClick={handleLoadMore}>
-            Load more
-          </button>
+        {filteredTeachers.length > loadedTeachersCount && (
+          <div className="ButtonLoadMoreConyainer">
+            <button className="ButtonLoadMore" onClick={handleLoadMore}>
+              Load more
+            </button>
+          </div>
         )}
       </div>
     </TeachersContainer>
