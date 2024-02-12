@@ -3,7 +3,7 @@ import { ReactComponent as Star } from "../../img/star.svg";
 import { ReactComponent as Group } from "../../img/Group.svg";
 import { ReactComponent as UkraineImg } from "../../img/ukraine.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { TeacherCard } from "./teachersList.styled";
 import { addFavorite, removeFavorite } from "../../redux/data/favorite-slise";
 
@@ -20,27 +20,17 @@ export default function TeachersList({ index, teacher }) {
     const newShowTextWindow = [...showTextWindow];
     newShowTextWindow[index] = true;
     setShowTextWindow(newShowTextWindow);
-    console.log(teachers);
   };
 
-  const isElementInArray = favoriteList.includes(teacher);
-
-  // const handleIconClick = useCallback(
-  //   (teacher) => {
-  //     if (!isElementInArray) {
-  //       return dispatch(addFavorite(teacher));
-  //     } else {
-  //       return dispatch(removeFavorite(teacher));
-  //     }
-  //   },
-  //   [dispatch, isElementInArray]
-  // );
+  const isElementInArray = favoriteList.some(
+    (favorite) => favorite.lessons_done === teacher.lessons_done
+  );
 
   const handleIconClick = (teacher) => {
     if (!isElementInArray) {
-      return dispatch(addFavorite(teacher));
+      dispatch(addFavorite(teacher));
     } else {
-      return dispatch(removeFavorite(teacher));
+      dispatch(removeFavorite(teacher));
     }
   };
 
