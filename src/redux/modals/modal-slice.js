@@ -5,11 +5,8 @@ const modalSlice = createSlice({
   initialState: {
     isModalOpenRegister: false,
     isModalOpenLogIn: false,
-    // mealTypeBreakfast: null,
-    // isModalCloseUserMenu: false,
-    // isModalShowGoal: false,
-    // isModalShowWeight: false,
-    // isModalUpdateRecord: false,
+    isModalOpenTrialLesson: false,
+    isBookTrialLesson: [],
   },
   reducers: {
     openModalRegister: (state) => {
@@ -24,33 +21,15 @@ const modalSlice = createSlice({
     closeModalLogIn: (state) => {
       state.isModalOpenLogIn = false;
     },
-    // showMealType: (state, action) => {
-    //   state.mealTypeBreakfast = action.payload;
-    // },
-    // openModalUserMenu: (state) => {
-    //   state.isModalCloseUserMenu = true;
-    // },
-    // closeModalUserMenu: (state) => {
-    //   state.isModalCloseUserMenu = false;
-    // },
-    // openModalGoal: (state) => {
-    //   state.isModalShowGoal = true;
-    // },
-    // closeModalGoal: (state) => {
-    //   state.isModalShowGoal = false;
-    // },
-    // openModalWeight: (state) => {
-    //   state.isModalShowWeight = true;
-    // },
-    // closeModalWeight: (state) => {
-    //   state.isModalShowWeight = false;
-    // },
-    // openUpdateRecord: (state) => {
-    //   state.isModalUpdateRecord = true;
-    // },
-    // closeUpdateRecord: (state) => {
-    //   state.isModalUpdateRecord = false;
-    // },
+    openModalTrialLesson: (state) => {
+      state.isModalOpenTrialLesson = true;
+    },
+    closeModalTrialLesson: (state) => {
+      state.isModalOpenTrialLesson = false;
+    },
+    addBookTrialLesson(state, { payload }) {
+      state.isBookTrialLesson.splice(0, 1, payload);
+    },
   },
 });
 
@@ -61,13 +40,7 @@ export const {
   closeModalRegister,
   openModalLogIn,
   closeModalLogIn,
-  // showMealType,
-  // openModalUserMenu,
-  // closeModalUserMenu,
-  // openModalGoal,
-  // closeModalGoal,
-  // openModalWeight,
-  // closeModalWeight,
-  // openUpdateRecord,
-  // closeUpdateRecord,
+  openModalTrialLesson,
+  closeModalTrialLesson,
+  addBookTrialLesson,
 } = modalSlice.actions;

@@ -11,7 +11,7 @@ import { Modal } from "components/Modals/Modals";
 import { useModal } from "hooks/useModal";
 
 function Layout() {
-  const { isModalLogIn, isModalRegister } = useModal();
+  const { isModalLogIn, isModalRegister, isModalTrialLesson } = useModal();
   const dispatch = useDispatch();
 
   const handleOpenModal = (id) => {
@@ -64,7 +64,7 @@ function Layout() {
             Registration
           </button>
         </div>
-        {(isModalLogIn || isModalRegister) && <Modal />}
+        {(isModalLogIn || isModalRegister || isModalTrialLesson) && <Modal />}
       </Header>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />

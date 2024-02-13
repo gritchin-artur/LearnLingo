@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { TeacherCard } from "./teachersList.styled";
 import { addFavorite, removeFavorite } from "../../redux/data/favorite-slise";
+import {
+  addBookTrialLesson,
+  openModalTrialLesson,
+} from "../../redux/modals/modal-slice";
 
 export default function TeachersList({ index, teacher }) {
   const dispatch = useDispatch();
@@ -32,6 +36,12 @@ export default function TeachersList({ index, teacher }) {
     } else {
       dispatch(removeFavorite(teacher));
     }
+  };
+
+  const handleOpenModal = (teacher) => {
+    console.log("teacher", teacher);
+    dispatch(openModalTrialLesson());
+    dispatch(addBookTrialLesson(teacher));
   };
 
   return (
@@ -143,7 +153,12 @@ export default function TeachersList({ index, teacher }) {
             ))}
           </ul>
           {showTextWindow[index] && (
-            <button className="ButtonBookLesson">Book trial lesson</button>
+            <button
+              className="ButtonBookLesson"
+              onClick={() => handleOpenModal(teacher)}
+            >
+              Book trial lesson
+            </button>
           )}
         </div>
       </div>
