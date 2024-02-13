@@ -79,7 +79,12 @@ export function LogInModal({ handleClickClose }) {
           {getInputAlert("password")}
           {values.password && getHidePassword()}
         </div>
-        <button type="submit" disabled={!isValid} className="ModalButton">
+        <button
+          type="submit"
+          disabled={!isValid}
+          className="ModalButton"
+          onClick={handleSubmit}
+        >
           Log In
         </button>
       </form>
