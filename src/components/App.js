@@ -6,7 +6,7 @@ import { Teachers } from "pages/teachers/teachers";
 import { Suspense, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import PrivateRoute from "routes/PrivatRoute/privatRoute";
+// import PrivateRoute from "routes/PrivatRoute/privatRoute";
 import PublicRoute from "routes/PublicRoute/publicRoute";
 
 export const App = () => {
