@@ -13,6 +13,7 @@ import {
   REGISTER,
   persistReducer,
 } from "redux-persist";
+import authSlise from "./auth/auth-slise";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+  auth: authSlise,
   teachers: teachersReducer,
   favorite: favoriteReduser,
   modal: modalReducer,

@@ -130,7 +130,7 @@ export const ModalContainer = styled.div`
   .ErrorText {
     position: absolute;
     color: red;
-    top: 48px;
+    top: 60px;
     left: 20px;
     font-size: 12px;
   }
@@ -138,7 +138,7 @@ export const ModalContainer = styled.div`
   .SuccessText {
     position: absolute;
     color: green;
-    top: 48px;
+    top: 60px;
     left: 20px;
     font-size: 12px;
   }
