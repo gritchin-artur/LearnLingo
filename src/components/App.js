@@ -6,8 +6,11 @@ import { Teachers } from "pages/teachers/teachers";
 import { Suspense, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-// import PrivateRoute from "routes/PrivatRoute/privatRoute";
+import PrivateRoute from "routes/PrivatRoute/privatRoute";
 import PublicRoute from "routes/PublicRoute/publicRoute";
+import { LogInModal } from "./Modals/logInModal/logInModal";
+import { RegisterModal } from "./Modals/registrationModal/registrationModal";
+import { Modal } from "./Modals/Modals";
 
 export const App = () => {
   const location = useLocation();
@@ -34,33 +37,33 @@ export const App = () => {
               index
               exact
               element={
-                // <PublicRoute>
-                <HomePage />
-                // </PublicRoute>
+                <PublicRoute>
+                  <HomePage />
+                </PublicRoute>
               }
             />
             <Route
               path="teachers"
               element={
-                // <PrivateRoute>
-                <Teachers />
-                // </PrivateRoute>
+                <PublicRoute>
+                  <Teachers />
+                </PublicRoute>
               }
             />
             <Route
               path="favorites"
               element={
-                // <PrivateRoute>
-                <Favorite />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <Favorite />
+                </PrivateRoute>
               }
             />
-            <Route path="*" element={<Navigate to="/" />} />
-            <Route
+
+            {/* <Route
               path="register"
               element={
                 <PublicRoute redirectTo="/teachers" restricted>
-                  {/* <SingUp /> */}
+                  <Modal />
                 </PublicRoute>
               }
             />
@@ -69,11 +72,12 @@ export const App = () => {
               restricted
               element={
                 <PublicRoute redirectTo="/teachers" restricted>
-                  {/* <LogIn /> */}
+                  <Modal />
                 </PublicRoute>
               }
-            />
+            /> */}
           </Route>
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
       <Toaster />

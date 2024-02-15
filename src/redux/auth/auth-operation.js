@@ -6,32 +6,25 @@ import {
   updateProfile,
   signOut,
 } from "firebase/auth";
+import toast from "react-hot-toast";
 
-export const logUp = createAsyncThunk(
-  "auth/logUp",
-  async (values, thunkAPI) => {
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        values.name,
-        values.email,
-        values.password
-      );
+export const logUp = createAsyncThunk("auth/logUp", async (values) => {
+  try {
+    await createUserWithEmailAndPassword(auth, values.email, values.password);
 
-      await updateProfile(auth.currentUser, {
-        displayName: values.name,
-      });
+    await updateProfile(auth.currentUser, {
+      displayName: values.name,
+    });
 
-      const { uid, displayName, email } = auth.currentUser;
-
-      return { uid, displayName, email };
-    } catch (e) {
-      return { error: e.message };
-    }
+    const { uid, displayName, email } = auth.currentUser;
+    toast.success(`Welcome ${email} 🤝`);
+    return { uid, displayName, email };
+  } catch (e) {
+    return { error: e.message };
   }
-);
+});
 
-export const logIn = createAsyncThunk("auth/logIn", async (body, thunkAPI) => {
+export const logIn = createAsyncThunk("auth/logIn", async (body) => {
   try {
     const response = await signInWithEmailAndPassword(
       auth,
@@ -40,16 +33,17 @@ export const logIn = createAsyncThunk("auth/logIn", async (body, thunkAPI) => {
     );
 
     const { uid, displayName, email } = response.user;
-
+    toast.success(`Welcome ${email} 🤝`);
     return { uid, displayName, email };
   } catch (e) {
     return { error: e.message };
   }
 });
 
-export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
+export const logOut = createAsyncThunk("auth/logOut", async (_) => {
   try {
     await signOut(auth);
+    toast.success(`Bye 👋`);
   } catch (e) {
     return { error: e.message };
   }

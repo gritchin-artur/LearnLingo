@@ -3,8 +3,11 @@ import { ReactComponent as CloseModal } from "../../../img/x.svg";
 import { useFormik } from "formik";
 import { SigninSchema } from "utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
+import { logIn } from "../../../redux/auth/auth-operation";
+import { useDispatch } from "react-redux";
 
 export function LogInModal({ handleClickClose }) {
+  const dispatch = useDispatch();
   const {
     values,
     errors,
@@ -27,8 +30,7 @@ export function LogInModal({ handleClickClose }) {
     onSubmit: (values) => {
       console.log(!isValid);
       handleClickClose();
-      // dispatch(saveSignUpForm(values));
-      // onNext();
+      dispatch(logIn(values));
     },
   });
 
@@ -53,7 +55,7 @@ export function LogInModal({ handleClickClose }) {
       <form className="ModalForm" onSubmit={handleSubmit}>
         <div className="DivInput">
           <input
-            id="email"
+            id="logInEmail"
             name="email"
             type="email"
             placeholder="Email"
@@ -67,7 +69,7 @@ export function LogInModal({ handleClickClose }) {
 
         <div className="DivInput" id="password">
           <input
-            id="password"
+            id="logInPassword"
             name="password"
             placeholder="Password"
             type={showPassword ? "text" : "password"}

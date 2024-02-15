@@ -17,6 +17,9 @@ export const Header = styled.header`
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: #121417;
+
+    text-decoration: none;
+    color: inherit;
   }
 
   .UserIcon {
@@ -48,6 +51,11 @@ export const Header = styled.header`
       color: #121417;
       transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
+  }
+
+  .NavlinkButton {
+    text-decoration: none;
+    color: inherit;
   }
 
   .LogInContainer {

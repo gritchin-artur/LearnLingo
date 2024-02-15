@@ -1,12 +1,14 @@
 import { ModalContainer } from "./registrationModal.styled";
 import { ReactComponent as CloseModal } from "../../../img/x.svg";
 import { useFormik } from "formik";
-import { SigninSchema } from "utils/validationSchemas";
+import { SignupSchema } from "utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logUp } from "../../../redux/auth/auth-operation";
 
 export function RegisterModal({ handleClickClose }) {
+  const email = useSelector((state) => state.auth.email);
+  const name = useSelector((state) => state.auth.login);
   const dispatch = useDispatch();
   const {
     values,
@@ -18,19 +20,19 @@ export function RegisterModal({ handleClickClose }) {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      // name: userName || "",
-      // email: userEmail || "",
+      name: name || "",
+      email: email || "",
       // password: userPassword || "",
-      name: "",
-      email: "",
+      // name: "",
+      // email: "",
       password: "",
     },
 
-    validationSchema: SigninSchema,
+    validationSchema: SignupSchema,
 
     onSubmit: (values) => {
       console.log(values);
-      dispatch(logUp(values));
+      dispatch(logUp(values)).then(() => {});
       handleClickClose();
     },
   });
@@ -57,7 +59,7 @@ export function RegisterModal({ handleClickClose }) {
       <form className="ModalForm" onSubmit={handleSubmit}>
         <div className="DivInput">
           <input
-            id="name"
+            id="registerName"
             name="name"
             type="text"
             placeholder="Name"
@@ -71,7 +73,7 @@ export function RegisterModal({ handleClickClose }) {
 
         <div className="DivInput">
           <input
-            id="email"
+            id="registerEmail"
             name="email"
             type="email"
             placeholder="Email"
@@ -85,7 +87,7 @@ export function RegisterModal({ handleClickClose }) {
 
         <div className="DivInput" id="password">
           <input
-            id="password"
+            id="registerPassword"
             name="password"
             placeholder="Password"
             type={showPassword ? "text" : "password"}
