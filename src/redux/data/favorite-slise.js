@@ -13,7 +13,7 @@ export const favoriteSlice = createSlice({
     },
     removeFavorite(state, { payload }) {
       state.favorite = state.favorite.filter(
-        (el) => el.lessons_done !== payload.lessons_done
+        (el) => JSON.stringify(el) !== JSON.stringify(payload)
       );
     },
   },

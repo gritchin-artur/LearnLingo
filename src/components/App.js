@@ -8,9 +8,6 @@ import { Toaster } from "react-hot-toast";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import PrivateRoute from "routes/PrivatRoute/privatRoute";
 import PublicRoute from "routes/PublicRoute/publicRoute";
-import { LogInModal } from "./Modals/logInModal/logInModal";
-import { RegisterModal } from "./Modals/registrationModal/registrationModal";
-import { Modal } from "./Modals/Modals";
 
 export const App = () => {
   const location = useLocation();
@@ -58,24 +55,6 @@ export const App = () => {
                 </PrivateRoute>
               }
             />
-
-            {/* <Route
-              path="register"
-              element={
-                <PublicRoute redirectTo="/teachers" restricted>
-                  <Modal />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="login"
-              restricted
-              element={
-                <PublicRoute redirectTo="/teachers" restricted>
-                  <Modal />
-                </PublicRoute>
-              }
-            /> */}
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

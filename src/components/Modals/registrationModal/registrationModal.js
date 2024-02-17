@@ -3,12 +3,10 @@ import { ReactComponent as CloseModal } from "../../../img/x.svg";
 import { useFormik } from "formik";
 import { SignupSchema } from "utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logUp } from "../../../redux/auth/auth-operation";
 
 export function RegisterModal({ handleClickClose }) {
-  const email = useSelector((state) => state.auth.email);
-  const name = useSelector((state) => state.auth.login);
   const dispatch = useDispatch();
   const {
     values,
@@ -20,29 +18,24 @@ export function RegisterModal({ handleClickClose }) {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      name: name || "",
-      email: email || "",
-      // password: userPassword || "",
-      // name: "",
-      // email: "",
+      name: "",
+      email: "",
       password: "",
     },
 
     validationSchema: SignupSchema,
 
     onSubmit: (values) => {
-      console.log(values);
       dispatch(logUp(values)).then(() => {});
       handleClickClose();
     },
   });
 
-  const {
-    showPassword,
-    // getInputClass,
-    getInputAlert,
-    getHidePassword,
-  } = ShowRules(values, touched, errors);
+  const { showPassword, getInputAlert, getHidePassword } = ShowRules(
+    values,
+    touched,
+    errors
+  );
 
   return (
     <ModalContainer>

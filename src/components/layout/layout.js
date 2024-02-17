@@ -19,7 +19,6 @@ function Layout() {
   const email = useSelector((state) => state.auth.email);
 
   const handleOpenModal = (id) => {
-    console.log("Open Modal");
     if (id === "register") {
       return dispatch(openModalRegister());
     }
@@ -30,7 +29,6 @@ function Layout() {
 
   const handleLogOut = () => {
     dispatch(logOut());
-    console.log("Log Out");
   };
 
   return (

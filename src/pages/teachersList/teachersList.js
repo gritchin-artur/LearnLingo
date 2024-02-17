@@ -10,11 +10,14 @@ import {
   addBookTrialLesson,
   openModalTrialLesson,
 } from "../../redux/modals/modal-slice";
+import toast from "react-hot-toast";
 
 export default function TeachersList({ index, teacher }) {
   const dispatch = useDispatch();
   const teachers = useSelector((state) => state.teachers.teachers);
   const favoriteList = useSelector((state) => state.favorite.favorite);
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const userId = useSelector((state) => state.auth.userId);
 
   const [showTextWindow, setShowTextWindow] = useState(
     Array(teachers.length).fill(false)
@@ -26,18 +29,24 @@ export default function TeachersList({ index, teacher }) {
     setShowTextWindow(newShowTextWindow);
   };
 
-  const isElementInArray = favoriteList.some(
-    (favorite) => favorite.lessons_done === teacher.lessons_done
+  const isElementInArray = favoriteList.find(
+    (obj) => obj.newFollower === userId && obj.id === teacher.experience.length
   );
 
   const handleIconClick = (teacher) => {
+    const data = {
+      newFollower: userId,
+      id: teacher.experience.length,
+    };
+    if (!isAuth) {
+      return toast.error("You is not authorized");
+    }
     if (!isElementInArray) {
-      dispatch(addFavorite(teacher));
+      dispatch(addFavorite(data));
     } else {
-      dispatch(removeFavorite(teacher));
+      dispatch(removeFavorite(data));
     }
   };
-
   const handleOpenModal = (teacher) => {
     console.log("teacher", teacher);
     dispatch(openModalTrialLesson());
@@ -76,7 +85,7 @@ export default function TeachersList({ index, teacher }) {
           </div>
           <svg
             className="Heart"
-            onClick={() => handleIconClick(teacher, teacher.lessons_done)}
+            onClick={() => handleIconClick(teacher)}
             xmlns="http://www.w3.org/2000/svg"
             width="26"
             height="26"

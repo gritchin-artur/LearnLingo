@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 export const getTeachers = createAsyncThunk(
   "teachers/getTeachers",
-  async (_, thunkAPI) => {
+  async (_) => {
     const dbRef = ref(db);
 
     try {

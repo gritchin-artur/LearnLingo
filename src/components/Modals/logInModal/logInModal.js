@@ -18,9 +18,6 @@ export function LogInModal({ handleClickClose }) {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      // name: userName || "",
-      // email: userEmail || "",
-      // password: userPassword || "",
       email: "",
       password: "",
     },
@@ -28,18 +25,16 @@ export function LogInModal({ handleClickClose }) {
     validationSchema: SigninSchema,
 
     onSubmit: (values) => {
-      console.log(!isValid);
       handleClickClose();
       dispatch(logIn(values));
     },
   });
 
-  const {
-    showPassword,
-    // getInputClass,
-    getInputAlert,
-    getHidePassword,
-  } = ShowRules(values, touched, errors);
+  const { showPassword, getInputAlert, getHidePassword } = ShowRules(
+    values,
+    touched,
+    errors
+  );
 
   return (
     <ModalContainer>
