@@ -33,6 +33,9 @@ export const Header = styled.header`
     border-radius: 50%;
     background: #8a8a89;
     margin-right: 8px;
+
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-image 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .Ul {

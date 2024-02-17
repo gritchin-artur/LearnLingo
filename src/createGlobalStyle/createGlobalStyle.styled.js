@@ -34,6 +34,10 @@ body {
 button{
   cursor: pointer;
 }
+
+select {
+  -webkit-appearance: none;
+}
 `;
 
 export default GlobalStyled;
