@@ -189,6 +189,10 @@ export const TeacherCard = styled.li`
     font-size: 14px;
     line-height: 129%;
     color: #121417;
+
+    align-items: center;
+    display: flex;
+    gap: 8px;
   }
 
   .ReviewElement {
