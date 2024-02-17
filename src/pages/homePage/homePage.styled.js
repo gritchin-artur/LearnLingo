@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import DefaultImg from "../../img/image-min.jpg";
+import blockImg from "../../img/block.png";
 
 export const Body = styled.div`
   display: grid;
@@ -16,6 +17,16 @@ export const Body = styled.div`
     background: #f8f8f8;
     padding: 90px 72px;
     box-sizing: border-box;
+
+    &:hover .TitlePart {
+      background: #fbe9ba;
+    }
+    &:hover .ButtonGetStart {
+      background: #ffdc86;
+    }
+    &:hover .Title {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
   }
 
   .Img {
@@ -25,14 +36,12 @@ export const Body = styled.div`
     height: 530px;
     background: #8a8a89;
     background-image: url(${DefaultImg});
-  }
 
-  .Statistics {
-    grid-area: s;
-    border: 3px dashed #8a8a89;
-    border-radius: 30px;
-    width: 1312px;
-    height: 116px;
+    transition: background-image 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background-image: url(${blockImg});
+    }
   }
 
   .Title {
@@ -42,6 +51,8 @@ export const Body = styled.div`
     letter-spacing: -0.02em;
     color: #121417;
     margin: 0;
+
+    transition: text-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .TitlePart {
@@ -51,6 +62,8 @@ export const Body = styled.div`
     padding-right: 15px;
     font-style: italic;
     font-weight: 400;
+
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .Text {
@@ -78,13 +91,32 @@ export const Body = styled.div`
     font-size: 18px;
     line-height: 156%;
     color: #121417;
+
+    &:hover,
+    &.active {
+      background: #f4c550;
+    }
+
+    transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .Statistics {
+    grid-area: s;
+    border: 1.5px dashed #8a8a89;
+    border-radius: 30px;
+    width: 1312px;
+    height: 116px;
+
     padding: 0 132px;
     box-sizing: border-box;
     justify-content: center;
     display: flex;
+
+    transition: border-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      border-color: #f4c550;
+    }
   }
 
   .StatisticsElement,

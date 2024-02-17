@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ukraineImg from "../../img/ukraine.svg";
 
 export const Header = styled.header`
   display: flex;
@@ -20,6 +21,10 @@ export const Header = styled.header`
 
     text-decoration: none;
     color: inherit;
+
+    &:hover .UserIcon {
+      background-image: url(${ukraineImg});
+    }
   }
 
   .UserIcon {
@@ -47,7 +52,7 @@ export const Header = styled.header`
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
-    &:active {
+    &.active {
       color: #121417;
       transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
