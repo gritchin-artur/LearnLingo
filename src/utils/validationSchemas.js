@@ -25,4 +25,18 @@ const SigninSchema = Yup.object().shape({
   password: Yup.string().required("Required"),
 });
 
-export { SignupSchema, SigninSchema };
+const LessonSchema = Yup.object().shape({
+  reason: Yup.string().required("Required"),
+  fullName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  number: Yup.string()
+    .matches(/^\d+$/)
+    .min(5, "Too Short!")
+    .max(10, "Too Long!")
+    .required("Required"),
+});
+
+export { SignupSchema, SigninSchema, LessonSchema };

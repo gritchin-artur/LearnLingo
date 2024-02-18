@@ -6,11 +6,10 @@ Learn Lingo is an application for those who are planning to learn a foreign lang
 
 ![block](https://github.com/gritchin-artur/LearnLingo/assets/123599698/4eef7e46-5f89-44b9-8186-af69a18a9093)
 
-The application consists of 3 pages: • a “Home” page with a list of company benefits and a button inviting you to start working with the application. • the "Teachers" page, which contains a list of teachers that the user can filter by the language of teaching, by the level of knowledge of the students with whom the teacher works and the price per hour of class. • private page "Favorites" with teachers who were added by the user to "favorites"
-Technologies Used
+This is a three-page site with Login and Registration capabilities. If the user is registered, the user has the ability to add and remove favorites! The Teachers section has the ability to filter teachers, allowing you to find the right teacher for you! Once you select a teacher you like, you can book a lesson.
 
-Frontend: JavaScript, React, Redux, Axios, Sass, Styled Components.
-Backend: Realtime Database
+Technologies Used: JavaScript, React, Redux, React Router, Axios, Formic, Styled Components, FireBaseDb,
+
 Getting Started
 
 1. Clone the repository.
@@ -19,7 +18,6 @@ Getting Started
 4. Access the application on the specified port in your web browser.
    Contributions
 
-Contributions are welcome! If you find any issues or have suggestions for improvement, please feel free to submit a pull request.
-Developers
+I hope you will be satisfied with our application!
 
-                                                     © made by Hrytchyn Artur
+© made by Hrytchyn Artur

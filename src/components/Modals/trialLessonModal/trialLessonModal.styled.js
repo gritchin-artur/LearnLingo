@@ -187,4 +187,24 @@ export const TrialModalContainer = styled.div`
       transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
+
+  .DivInput {
+    position: relative;
+  }
+
+  .ErrorText {
+    position: absolute;
+    color: red;
+    top: 60px;
+    left: 20px;
+    font-size: 12px;
+  }
+
+  .SuccessText {
+    position: absolute;
+    color: green;
+    top: 60px;
+    left: 20px;
+    font-size: 12px;
+  }
 `;
