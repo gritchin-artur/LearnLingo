@@ -1,6 +1,5 @@
 import { TrialModalContainer } from "./trialLessonModal.styled";
 import { ReactComponent as CloseModal } from "../../../img/x.svg";
-import { useEffect } from "react";
 import { useModal } from "hooks/useModal";
 import { useFormik } from "formik";
 
@@ -21,9 +20,6 @@ export function TrialModal({ handleClickClose }) {
     },
   });
 
-  useEffect(() => {
-    console.log(isModalTrialData);
-  }, [isModalTrialData]);
   return (
     <TrialModalContainer>
       <CloseModal className="CloseButton" onClick={handleClickClose} />

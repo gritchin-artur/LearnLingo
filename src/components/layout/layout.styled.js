@@ -1,14 +1,21 @@
 import styled from "styled-components";
 import ukraineImg from "../../img/ukraine.svg";
 
-export const Header = styled.header`
-  display: flex;
+export const MainContainer = styled.div`
   justify-content: space-between;
-  align-items: center;
-  padding-left: 64px;
-  padding-right: 64px;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 64px;
+    padding-right: 64px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
 
   .UserDiv {
     display: flex;

@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { ReactComponent as LogInImg } from "../../img/log-in-01.svg";
-import { Header } from "./layout.styled";
+import { MainContainer } from "./layout.styled";
 import { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,6 +10,7 @@ import {
 import { Modal } from "components/Modals/Modals";
 import { useModal } from "hooks/useModal";
 import { logOut } from "../../redux/auth/auth-operation";
+import { Footer } from "pages/footer/footer";
 
 function Layout() {
   const { isModalLogIn, isModalRegister, isModalTrialLesson } = useModal();
@@ -32,8 +33,8 @@ function Layout() {
   };
 
   return (
-    <div>
-      <Header>
+    <MainContainer>
+      <header className="Header">
         <NavLink to="/" className="UserDiv">
           <span className="UserIcon" />
           LearnLingo
@@ -91,11 +92,12 @@ function Layout() {
           </button>
         </div>
         {(isModalLogIn || isModalRegister || isModalTrialLesson) && <Modal />}
-      </Header>
+      </header>
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+      <Footer />
+    </MainContainer>
   );
 }
 

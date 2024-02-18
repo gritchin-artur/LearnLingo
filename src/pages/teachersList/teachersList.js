@@ -48,7 +48,6 @@ export default function TeachersList({ index, teacher }) {
     }
   };
   const handleOpenModal = (teacher) => {
-    console.log("teacher", teacher);
     dispatch(openModalTrialLesson());
     dispatch(addBookTrialLesson(teacher));
   };
