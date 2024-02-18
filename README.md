@@ -1,9 +1,11 @@
-                             ![ukraine](https://github.com/gritchin-artur/LearnLingo/assets/123599698/bd185a36-b7e0-4510-b6f8-7c3a9c7c0178)LearnLingo React App
+![ukraine](https://github.com/gritchin-artur/LearnLingo/assets/123599698/bd185a36-b7e0-4510-b6f8-7c3a9c7c0178)LearnLingo React App
 
 Description
 
 LearnLingo React App is an application for a company that offers to use the services of online language teachers.
 Features
+
+![block](https://github.com/gritchin-artur/LearnLingo/assets/123599698/4eef7e46-5f89-44b9-8186-af69a18a9093)
 
 The application consists of 3 pages: • a “Home” page with a list of company benefits and a button inviting you to start working with the application. • the "Teachers" page, which contains a list of teachers that the user can filter by the language of teaching, by the level of knowledge of the students with whom the teacher works and the price per hour of class. • private page "Favorites" with teachers who were added by the user to "favorites"
 Technologies Used
