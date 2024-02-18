@@ -1,4 +1,4 @@
-                                   ![Logo](./src/img/ukraine.svg)LearnLingo React App
+                             ![ukraine](https://github.com/gritchin-artur/rent_auto/assets/123599698/50268a51-8189-4e95-8996-63db56413e1b)LearnLingo React App
 
 Description
 
