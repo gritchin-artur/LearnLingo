@@ -1,4 +1,4 @@
-                             ![ukraine](https://github.com/gritchin-artur/rent_auto/assets/123599698/50268a51-8189-4e95-8996-63db56413e1b)LearnLingo React App
+                             ![ukraine](https://github.com/gritchin-artur/LearnLingo/assets/123599698/bd185a36-b7e0-4510-b6f8-7c3a9c7c0178)LearnLingo React App
 
 Description
 
