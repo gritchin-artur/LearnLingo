@@ -2,8 +2,7 @@
 
 Description
 
-LearnLingo React App is an application for a company that offers to use the services of online language teachers.
-Features
+Learn Lingo is an application for those who are planning to learn a foreign language. In our application you can find a teacher suitable for you according to your chosen language, price and level of knowledge!
 
 ![block](https://github.com/gritchin-artur/LearnLingo/assets/123599698/4eef7e46-5f89-44b9-8186-af69a18a9093)
 
