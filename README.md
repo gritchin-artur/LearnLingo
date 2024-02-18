@@ -1,4 +1,4 @@
-                                   !["Logo"](./src/img/ukraine.svg)LearnLingo React App
+                                   ![Logo](./src/img/ukraine.svg)LearnLingo React App
 
 Description
 
@@ -21,8 +21,4 @@ Getting Started
 Contributions are welcome! If you find any issues or have suggestions for improvement, please feel free to submit a pull request.
 Developers
 
-The project was implemented by:
-
-Olga Polishchuk
-
-Olga Polishchuk: Full-stack developer
+                                                     © made by Hrytchyn Artur
