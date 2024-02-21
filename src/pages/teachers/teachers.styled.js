@@ -9,6 +9,7 @@ export const TeachersContainer = styled.div`
   .Form {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
   }
 
   .FormElement {
@@ -23,7 +24,7 @@ export const TeachersContainer = styled.div`
     color: #8a8a89;
   }
 
-  .Select {
+  /* .Select {
     font-weight: 500;
     font-size: 18px;
     line-height: 111%;
@@ -33,7 +34,7 @@ export const TeachersContainer = styled.div`
     padding: 14px 18px;
     background: #fff;
     border: none;
-  }
+  } */
 
   .TeachersList {
     gap: 32px;

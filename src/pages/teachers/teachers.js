@@ -3,9 +3,18 @@ import { TeachersContainer } from "./teachers.styled";
 import { useEffect, useState } from "react";
 import { getTeachers } from "../../redux/data/data-operation";
 import TeachersList from "pages/teachersList/teachersList";
+import Select from "react-select";
+import { useSelect } from "hooks/useSelect";
 
 export function Teachers() {
   const dispatch = useDispatch();
+  const {
+    optionsLanguages,
+    optionsLevelOfKnowledge,
+    optionsPrice,
+    colourStyles,
+    themeStyles,
+  } = useSelect();
 
   const isLoading = useSelector((state) => state.teachers.isLoading);
   const teachers = useSelector((state) => state.teachers.teachers);
@@ -28,7 +37,7 @@ export function Teachers() {
       !languages || teacher.languages.includes(languages);
     const levelFilterResult = !level || teacher.levels.includes(level);
     const priceFilterResult =
-      !price || `${Math.round(teacher.price_per_hour / 10) * 10}` === price;
+      !price || `${Math.round(teacher.price_per_hour / 5) * 5}` === price;
 
     return languageFilterResult && levelFilterResult && priceFilterResult;
   });
@@ -40,69 +49,42 @@ export function Teachers() {
           <label className="Label" htmlFor="languages">
             Languages
           </label>
-          <select
-            className="Select"
+          <Select
             id="languages"
-            name="languages"
-            onChange={(e) => setLanguages(e.target.value)}
-            value={languages}
-          >
-            <option value="">Language</option>
-            <option value="French">French</option>
-            <option value="English">English</option>
-            <option value="German">German</option>
-            <option value="Spanish">Spanish</option>
-            <option value="Italian">Italian</option>
-            <option value="Korean">Korean</option>
-            <option value="Mandarin Chinese">Mandarin Chinese</option>
-            <option value="Vietnamese">Vietnamese</option>
-          </select>
+            styles={colourStyles}
+            theme={themeStyles}
+            defaultValue=""
+            onChange={(e) => setLanguages(e ? e.value : "")}
+            options={optionsLanguages}
+          />
         </div>
 
         <div className="FormElement">
           <label className="Label" htmlFor="levelOfKnowledge">
             Level of knowledge
           </label>
-          <select
-            className="Select"
+          <Select
             id="levelOfKnowledge"
-            name="levelOfKnowledge"
-            onChange={(e) => setLevel(e.target.value)}
-            value={level}
-          >
-            <option value="">Level</option>
-            <option value="A1 Beginner">A1 Beginner</option>
-            <option value="A2 Elementary">A2 Elementary</option>
-            <option value="B1 Intermediate">B1 Intermediate</option>
-            <option value="B2 Upper-Intermediate">B2 Upper-Intermediate</option>
-            <option value="C1 Advanced">C1 Advanced</option>
-            <option value="C2 Proficient">C2 Proficient</option>
-          </select>
+            styles={colourStyles}
+            theme={themeStyles}
+            defaultValue=""
+            onChange={(e) => setLevel(e ? e.value : "")}
+            options={optionsLevelOfKnowledge}
+          />
         </div>
 
         <div className="FormElement">
           <label className="Label" htmlFor="price">
             Price
           </label>
-          <select
-            className="Select"
+          <Select
             id="price"
-            name="price"
-            onChange={(e) => setPrice(e.target.value)}
-            value={price}
-          >
-            <option value="">Price</option>
-            <option value="10">10 $</option>
-            <option value="20">20 $</option>
-            <option value="30">30 $</option>
-            <option value="40">40 $</option>
-            <option value="50">50 $</option>
-            <option value="60">60 $</option>
-            <option value="70">70 $</option>
-            <option value="80">80 $</option>
-            <option value="90">90 $</option>
-            <option value="100">100 $</option>
-          </select>
+            styles={colourStyles}
+            theme={themeStyles}
+            defaultValue=""
+            onChange={(e) => setPrice(e ? e.value : "")}
+            options={optionsPrice}
+          />
         </div>
       </form>
 

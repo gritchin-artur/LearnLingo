@@ -45,6 +45,7 @@ export const TeacherCard = styled.li`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 20px;
     @media only screen and (min-width: 1100px) {
       gap: 120px;
     }
@@ -216,5 +217,13 @@ export const TeacherCard = styled.li`
     font-size: 18px;
     line-height: 156%;
     color: #121417;
+  }
+
+  option:hover {
+    background-color: #38cd3e;
+  }
+
+  option {
+    padding: 50px;
   }
 `;
