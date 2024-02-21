@@ -5,7 +5,7 @@ export const MainContainer = styled.div`
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 
   .Header {
     display: flex;

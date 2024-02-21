@@ -2,6 +2,7 @@ import { ReactComponent as OpenBook } from "../../img/book-open.svg";
 import { ReactComponent as Star } from "../../img/star.svg";
 import { ReactComponent as Group } from "../../img/Group.svg";
 import { ReactComponent as UkraineImg } from "../../img/ukraine.svg";
+import { ReactComponent as DefaultImg } from "../../img/default.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { TeacherCard } from "./teachersList.styled";
@@ -56,7 +57,11 @@ export default function TeachersList({ index, teacher }) {
     <TeacherCard>
       <div className="AvatarContainer">
         <Group className="Group" />
-        <img className="Avatar" alt={teacher.name} src={teacher.avatar_url} />
+        {teacher.avatar_url ? (
+          <img className="Avatar" alt={teacher.name} src={teacher.avatar_url} />
+        ) : (
+          <DefaultImg />
+        )}
       </div>
       <div className="ContentContainer">
         <div className="HeaderCard">

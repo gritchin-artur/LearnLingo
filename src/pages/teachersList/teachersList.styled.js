@@ -6,6 +6,7 @@ export const TeacherCard = styled.li`
   border-radius: 24px;
   padding: 24px;
   background: #fff;
+  max-width: 1184px;
 
   box-sizing: border-box;
 
@@ -43,6 +44,10 @@ export const TeacherCard = styled.li`
   .HeaderCard {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    @media only screen and (min-width: 1100px) {
+      gap: 120px;
+    }
   }
 
   .TeacherQuatyContainer {
@@ -67,7 +72,7 @@ export const TeacherCard = styled.li`
   }
 
   .TeacherQuatyContainer {
-    margin-right: 64px;
+    flex-wrap: wrap;
   }
 
   .Languages {
@@ -76,8 +81,6 @@ export const TeacherCard = styled.li`
     font-size: 16px;
     line-height: 150%;
     color: #8a8a89;
-
-    margin-right: 306px;
   }
 
   .Border {
@@ -147,6 +150,7 @@ export const TeacherCard = styled.li`
     display: flex;
     padding: 0;
     margin-top: inherit;
+    flex-wrap: wrap;
   }
 
   .YellowBackground {

@@ -25,8 +25,9 @@ body {
   padding-left: 64px;
   padding-right: 64px;
   padding-bottom: 30px;
-  width: 1440px;
+  max-width: 1440px;
   box-sizing: border-box;
+
 
   background: ${(props) => props.backgroundColor};
   

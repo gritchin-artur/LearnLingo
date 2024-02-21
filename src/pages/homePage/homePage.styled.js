@@ -3,14 +3,17 @@ import DefaultImg from "../../img/image-min.jpg";
 import blockImg from "../../img/block.png";
 
 export const Body = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-areas:
     "c i"
-    "s s";
+    "s s"; */
   gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   .StartContainer {
-    grid-area: c;
+    /* grid-area: c; */
     border-radius: 30px;
     width: 720px;
     height: 530px;
@@ -30,7 +33,7 @@ export const Body = styled.div`
   }
 
   .Img {
-    grid-area: i;
+    /* grid-area: i; */
     border-radius: 30px;
     width: 568px;
     height: 530px;
@@ -101,14 +104,13 @@ export const Body = styled.div`
   }
 
   .Statistics {
-    grid-area: s;
+    /* grid-area: s; */
     border: 1.5px dashed #8a8a89;
     border-radius: 30px;
-    width: 1312px;
-    height: 116px;
+    /* height: 116px; */
+    width: 100%;
+    padding: 50px;
 
-    padding: 0 132px;
-    box-sizing: border-box;
     justify-content: center;
     display: flex;
 
@@ -127,6 +129,10 @@ export const Body = styled.div`
   .Statisticslist {
     padding: 0;
     gap: 102px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .StatisticsElement {

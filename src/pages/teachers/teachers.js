@@ -47,6 +47,7 @@ export function Teachers() {
             onChange={(e) => setLanguages(e.target.value)}
             value={languages}
           >
+            <option value="">Language</option>
             <option value="French">French</option>
             <option value="English">English</option>
             <option value="German">German</option>
@@ -69,6 +70,7 @@ export function Teachers() {
             onChange={(e) => setLevel(e.target.value)}
             value={level}
           >
+            <option value="">Level</option>
             <option value="A1 Beginner">A1 Beginner</option>
             <option value="A2 Elementary">A2 Elementary</option>
             <option value="B1 Intermediate">B1 Intermediate</option>
@@ -89,6 +91,7 @@ export function Teachers() {
             onChange={(e) => setPrice(e.target.value)}
             value={price}
           >
+            <option value="">Price</option>
             <option value="10">10 $</option>
             <option value="20">20 $</option>
             <option value="30">30 $</option>
