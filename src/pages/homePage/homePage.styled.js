@@ -3,20 +3,17 @@ import DefaultImg from "../../img/image-min.jpg";
 import blockImg from "../../img/block.png";
 
 export const Body = styled.div`
-  /* display: grid;
-  grid-template-areas:
-    "c i"
-    "s s"; */
   gap: 24px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
   .StartContainer {
-    /* grid-area: c; */
+    @media only screen and (max-width: 768px) {
+      padding: 45px 36px;
+    }
     border-radius: 30px;
-    width: 720px;
-    height: 530px;
+    max-width: 720px;
     background: #f8f8f8;
     padding: 90px 72px;
     box-sizing: border-box;
@@ -39,6 +36,7 @@ export const Body = styled.div`
     height: 530px;
     background: #8a8a89;
     background-image: url(${DefaultImg});
+    background-position: center;
 
     transition: background-image 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -75,7 +73,7 @@ export const Body = styled.div`
     line-height: 137%;
     letter-spacing: -0.02em;
     color: #121417;
-    width: 477px;
+    max-width: 477px;
     margin-top: 20px;
   }
 
