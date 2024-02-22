@@ -19,6 +19,11 @@ p{
 }
 
 body {
+      @media only screen and (max-width: 1000px) {
+          padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 15px;
+    }
   margin: 0;
   padding: 0;
   font-family: Roboto;
