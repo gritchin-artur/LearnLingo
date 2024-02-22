@@ -6,6 +6,7 @@ import {
   openModalRegister,
 } from "../../../redux/modals/modal-slice";
 import { logOut } from "../../../redux/auth/auth-operation";
+import { ReactComponent as ButtonClose } from "../../../img/x.svg";
 
 export function MobileMenu({ handleClickClose }) {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export function MobileMenu({ handleClickClose }) {
 
   return (
     <MobileMenuContainer>
+      <ButtonClose className="ButtonClose" onClick={handleClickClose} />
       <ul className="Ul">
         <li>
           <NavLink className="Navlink" to="/" onClick={handleClickClose}>

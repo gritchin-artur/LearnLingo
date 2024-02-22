@@ -12,6 +12,13 @@ export const MobileMenuContainer = styled.div`
   display: grid;
   align-items: center;
 
+  .ButtonClose {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+
   .Navlink {
     cursor: pointer;
     text-decoration: none;
