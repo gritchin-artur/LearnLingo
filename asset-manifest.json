@@ -1,23 +1,24 @@
 {
   "files": {
     "main.css": "/LearnLingo/static/css/main.b87514ff.css",
-    "main.js": "/LearnLingo/static/js/main.8ae5da6e.js",
+    "main.js": "/LearnLingo/static/js/main.efb166c2.js",
     "static/media/block.png": "/LearnLingo/static/media/block.bfda1881fdc9002191af.png",
     "index.html": "/LearnLingo/index.html",
     "static/media/book-open.svg": "/LearnLingo/static/media/book-open.c33b5247ffbaa708631a4c5f23cf1423.svg",
     "static/media/eye-off.svg": "/LearnLingo/static/media/eye-off.92f12c0302d2032ad9d17b195bfd82f0.svg",
     "static/media/star.svg": "/LearnLingo/static/media/star.1e862e5ef32541008883aa0ad288f528.svg",
     "static/media/ukraine.svg": "/LearnLingo/static/media/ukraine.d34743a6d4214a7edfd037c74ed2da93.svg",
+    "static/media/Nav.svg": "/LearnLingo/static/media/Nav.424592733778a4d52889214303e00fd1.svg",
     "static/media/eye.svg": "/LearnLingo/static/media/eye.e6da14c3348c8d2d72397edc75d8113d.svg",
     "static/media/log-in-01.svg": "/LearnLingo/static/media/log-in-01.2beb9926a4a08958498268e03b83e4fc.svg",
     "static/media/default.svg": "/LearnLingo/static/media/default.4025f1f3a623a42e79b5f8305dcd6b5b.svg",
     "static/media/x.svg": "/LearnLingo/static/media/x.c36f37f5107d22d2a33df69fda963758.svg",
     "static/media/Group.svg": "/LearnLingo/static/media/Group.f00e07c359d2557f7d174d3800fd00f6.svg",
     "main.b87514ff.css.map": "/LearnLingo/static/css/main.b87514ff.css.map",
-    "main.8ae5da6e.js.map": "/LearnLingo/static/js/main.8ae5da6e.js.map"
+    "main.efb166c2.js.map": "/LearnLingo/static/js/main.efb166c2.js.map"
   },
   "entrypoints": [
     "static/css/main.b87514ff.css",
-    "static/js/main.8ae5da6e.js"
+    "static/js/main.efb166c2.js"
   ]
 }
