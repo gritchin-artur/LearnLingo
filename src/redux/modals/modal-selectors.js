@@ -6,4 +6,6 @@ export const selectShowModalRegister = (state) =>
 export const selectShowModalTrialLesson = (state) =>
   state.modal.isModalOpenTrialLesson;
 
+export const selectShowModalMobile = (state) => state.modal.isModalMobileOpen;
+
 export const selectBookTrialLesson = (state) => state.modal.isBookTrialLesson;

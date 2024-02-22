@@ -7,6 +7,9 @@ export const TeachersContainer = styled.div`
   display: grid;
 
   .Form {
+    @media only screen and (max-width: 1000px) {
+      justify-content: center;
+    }
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
@@ -23,18 +26,6 @@ export const TeachersContainer = styled.div`
     line-height: 129%;
     color: #8a8a89;
   }
-
-  /* .Select {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 111%;
-    color: #121417;
-
-    border-radius: 14px;
-    padding: 14px 18px;
-    background: #fff;
-    border: none;
-  } */
 
   .TeachersList {
     gap: 32px;

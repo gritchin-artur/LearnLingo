@@ -5,6 +5,9 @@ export const ContentContainer = styled.div`
     gap: 32px;
     display: grid;
     margin-top: 30px;
+
+    display: grid;
+    justify-content: center;
   }
 
   .ButtonLoadMore {

@@ -46,6 +46,7 @@ export const useSelect = () => {
     borderRadius: 10,
     colors: {
       ...theme.colors,
+      primary50: "#f0aa8d",
       primary25: "#fbe9ba",
       primary: "#f4c550",
     },

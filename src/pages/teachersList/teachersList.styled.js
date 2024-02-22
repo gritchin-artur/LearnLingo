@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const TeacherCard = styled.li`
+  @media only screen and (max-width: 1000px) {
+    display: block;
+  }
+  position: relative;
   display: flex;
   gap: 48px;
   border-radius: 24px;
@@ -44,11 +48,17 @@ export const TeacherCard = styled.li`
   .HeaderCard {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    @media only screen and (min-width: 1100px) {
-      gap: 120px;
+    gap: 40px;
+
+    @media only screen and (max-width: 1000px) {
+      display: block;
     }
+  }
+
+  .Heart {
+    position: absolute;
+    right: 20px;
+    top: 20px;
   }
 
   .TeacherQuatyContainer {

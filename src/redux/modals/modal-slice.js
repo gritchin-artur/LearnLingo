@@ -6,6 +6,7 @@ const modalSlice = createSlice({
     isModalOpenRegister: false,
     isModalOpenLogIn: false,
     isModalOpenTrialLesson: false,
+    isModalMobileOpen: false,
     isBookTrialLesson: [],
   },
   reducers: {
@@ -27,6 +28,12 @@ const modalSlice = createSlice({
     closeModalTrialLesson: (state) => {
       state.isModalOpenTrialLesson = false;
     },
+    openModalMobile: (state) => {
+      state.isModalMobileOpen = true;
+    },
+    closeModalMobile: (state) => {
+      state.isModalMobileOpen = false;
+    },
     addBookTrialLesson(state, { payload }) {
       state.isBookTrialLesson.splice(0, 1, payload);
     },
@@ -42,5 +49,7 @@ export const {
   closeModalLogIn,
   openModalTrialLesson,
   closeModalTrialLesson,
+  openModalMobile,
+  closeModalMobile,
   addBookTrialLesson,
 } = modalSlice.actions;

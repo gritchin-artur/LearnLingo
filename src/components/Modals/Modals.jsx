@@ -6,22 +6,30 @@ import {
   closeModalRegister,
   closeModalLogIn,
   closeModalTrialLesson,
+  closeModalMobile,
 } from "../../redux/modals/modal-slice";
 import { useModal } from "hooks/useModal";
 import { LogInModal } from "./logInModal/logInModal";
 import { RegisterModal } from "./registrationModal/registrationModal";
 import { TrialModal } from "./trialLessonModal/trialLessonModal";
+import { MobileMenu } from "./mobileMenuModal/mobileMenuModal";
 
 const modalRoot = document.querySelector("#modal-root");
 
 export const Modal = () => {
   const dispatch = useDispatch();
-  const { isModalLogIn, isModalRegister, isModalTrialLesson } = useModal();
+  const {
+    isModalLogIn,
+    isModalRegister,
+    isModalMobile,
+    isModalTrialLesson,
+  } = useModal();
 
   const handleClickClose = useCallback(() => {
     dispatch(closeModalRegister());
     dispatch(closeModalLogIn());
     dispatch(closeModalTrialLesson());
+    dispatch(closeModalMobile());
   }, [dispatch]);
 
   const handleBackdropClick = (e) => {
@@ -48,12 +56,16 @@ export const Modal = () => {
     isModalLogIn,
     isModalRegister,
     isModalTrialLesson,
+    isModalMobile,
     handleClickClose,
     dispatch,
   ]);
 
   return createPortal(
-    (isModalLogIn || isModalRegister || isModalTrialLesson) && (
+    (isModalLogIn ||
+      isModalRegister ||
+      isModalTrialLesson ||
+      isModalMobile) && (
       <BackdropModalStyle onClick={handleBackdropClick}>
         <div>
           {isModalLogIn && <LogInModal handleClickClose={handleClickClose} />}
@@ -63,6 +75,7 @@ export const Modal = () => {
           {isModalTrialLesson && (
             <TrialModal handleClickClose={handleClickClose} />
           )}
+          {isModalMobile && <MobileMenu handleClickClose={handleClickClose} />}
         </div>
       </BackdropModalStyle>
     ),

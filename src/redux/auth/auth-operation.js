@@ -36,7 +36,7 @@ export const logIn = createAsyncThunk("auth/logIn", async (body) => {
     toast.success(`Welcome ${email} 🤝`);
     return { uid, displayName, email };
   } catch (e) {
-    return { error: e.message };
+    return { error: "Your password or email is not valid" };
   }
 });
 

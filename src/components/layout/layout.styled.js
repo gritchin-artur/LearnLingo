@@ -5,7 +5,6 @@ export const MainContainer = styled.div`
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-  /* min-height: 100vh; */
 
   .Header {
     display: flex;
@@ -15,6 +14,8 @@ export const MainContainer = styled.div`
     padding-right: 64px;
     margin-top: 24px;
     margin-bottom: 24px;
+
+    flex-wrap: wrap;
   }
 
   .UserDiv {
@@ -46,6 +47,7 @@ export const MainContainer = styled.div`
   }
 
   .Ul {
+    align-items: center;
     list-style: none;
     display: flex;
     margin-left: auto;
@@ -53,6 +55,9 @@ export const MainContainer = styled.div`
   }
 
   .Navlink {
+    @media only screen and (max-width: 1000px) {
+      display: none;
+    }
     cursor: pointer;
     text-decoration: none;
     font-weight: 400;
@@ -74,6 +79,9 @@ export const MainContainer = styled.div`
   }
 
   .LogInContainer {
+    @media only screen and (max-width: 1000px) {
+      display: none;
+    }
     margin-left: auto;
     display: flex;
     align-items: center;
@@ -120,5 +128,12 @@ export const MainContainer = styled.div`
       }
       transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
+  }
+
+  .BurgerMenu {
+    @media only screen and (max-width: 1000px) {
+      display: block;
+    }
+    display: none;
   }
 `;

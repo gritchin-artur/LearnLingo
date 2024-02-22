@@ -1,11 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { ReactComponent as LogInImg } from "../../img/log-in-01.svg";
+import { ReactComponent as BurgerMenu } from "../../img/Nav.svg";
 import { MainContainer } from "./layout.styled";
 import { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   openModalRegister,
   openModalLogIn,
+  openModalMobile,
 } from "../../redux/modals/modal-slice";
 import { Modal } from "components/Modals/Modals";
 import { useModal } from "hooks/useModal";
@@ -13,7 +15,12 @@ import { logOut } from "../../redux/auth/auth-operation";
 import { Footer } from "pages/footer/footer";
 
 function Layout() {
-  const { isModalLogIn, isModalRegister, isModalTrialLesson } = useModal();
+  const {
+    isModalLogIn,
+    isModalRegister,
+    isModalTrialLesson,
+    isModalMobile,
+  } = useModal();
   const dispatch = useDispatch();
 
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -59,15 +66,6 @@ function Layout() {
           )}
         </ul>
         <div className="LogInContainer">
-          {/* <button
-            className=" LogInButton"
-            id="login"
-            onClick={() => handleOpenModal("login")}
-          >
-            <LogInImg />
-            Log in
-          </button> */}
-
           {isAuth ? (
             email
           ) : (
@@ -86,13 +84,19 @@ function Layout() {
             className="RegisterButton"
             onClick={isAuth ? handleLogOut : () => handleOpenModal("register")}
           >
-            {/* <NavLink to="/register" className="NavlinkButton"> */}
             {isAuth ? "Log Out" : "Registration"}
-            {/* </NavLink> */}
           </button>
         </div>
-        {(isModalLogIn || isModalRegister || isModalTrialLesson) && <Modal />}
+        <BurgerMenu
+          className="BurgerMenu"
+          onClick={() => dispatch(openModalMobile())}
+        />
+        {(isModalLogIn ||
+          isModalRegister ||
+          isModalTrialLesson ||
+          isModalMobile) && <Modal />}
       </header>
+
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
