@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const TrialModalContainer = styled.div`
   border-radius: 30px;
-  width: 599px;
-  height: 971px;
+  max-width: 599px;
+
   padding: 64px;
   box-sizing: border-box;
 
@@ -86,11 +86,6 @@ export const TrialModalContainer = styled.div`
     display: grid;
     gap: 40px;
   }
-
-  /* .RadioButtonContainer {
-    display: grid;
-    gap: 16px;
-  } */
 
   .InputContainer {
     display: grid;

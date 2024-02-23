@@ -37,6 +37,7 @@ export const MobileMenuContainer = styled.div`
 
   .LogInContainer {
     display: grid;
+    gap: 20px;
   }
 
   .LogInButton {

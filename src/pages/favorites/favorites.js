@@ -1,4 +1,4 @@
-import TeachersList from "pages/teachersList/teachersList";
+import TeachersList from "components/teachersList/teachersList";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { ContentContainer } from "./favorites.styled";
@@ -24,7 +24,7 @@ export default function Favorite() {
   };
   return (
     <>
-      {findFavorite && (
+      {findFavorite.length ? (
         <ContentContainer>
           <ul className="TeachersList">
             {findFavorite
@@ -45,6 +45,8 @@ export default function Favorite() {
             </div>
           )}
         </ContentContainer>
+      ) : (
+        <h1 style={{ textAlign: "center" }}>You need to choose a teacher!</h1>
       )}
     </>
   );

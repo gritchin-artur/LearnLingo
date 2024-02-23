@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { TeachersContainer } from "./teachers.styled";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getTeachers } from "../../redux/data/data-operation";
-import TeachersList from "pages/teachersList/teachersList";
+import TeachersList from "components/teachersList/teachersList";
 import Select from "react-select";
 import { useSelect } from "hooks/useSelect";
 
@@ -32,15 +32,29 @@ export function Teachers() {
     setLoadedTeachersCount((prevCount) => prevCount + 4);
   };
 
-  const filteredTeachers = teachers.filter((teacher) => {
-    const languageFilterResult =
-      !languages || teacher.languages.includes(languages);
-    const levelFilterResult = !level || teacher.levels.includes(level);
-    const priceFilterResult =
-      !price || `${Math.round(teacher.price_per_hour / 5) * 5}` === price;
+  const filteredTeachers = useMemo(() => {
+    return teachers.filter((teacher) => {
+      const languageFilterResult =
+        !languages || teacher.languages.includes(languages);
+      const levelFilterResult = !level || teacher.levels.includes(level);
+      const priceFilterResult =
+        !price || `${Math.round(teacher.price_per_hour / 5) * 5}` === price;
 
-    return languageFilterResult && levelFilterResult && priceFilterResult;
-  });
+      return languageFilterResult && levelFilterResult && priceFilterResult;
+    });
+  }, [teachers, languages, level, price]);
+
+  const renderedTeachers = useMemo(() => {
+    return filteredTeachers
+      .slice(0, loadedTeachersCount)
+      .map((teacher, index) => (
+        <TeachersList
+          key={index}
+          teacher={teacher}
+          filteredTeachers={filteredTeachers}
+        />
+      ));
+  }, [filteredTeachers, loadedTeachersCount]);
 
   return (
     <TeachersContainer>
@@ -95,19 +109,7 @@ export function Teachers() {
               You must be enter incorrect value! Please try enather value!
             </h2>
           )}
-          {isLoading ? (
-            <h2>Loading...</h2>
-          ) : (
-            filteredTeachers
-              .slice(0, loadedTeachersCount)
-              .map((teacher, index) => (
-                <TeachersList
-                  key={index}
-                  teacher={teacher}
-                  filteredTeachers={filteredTeachers}
-                />
-              ))
-          )}
+          {isLoading ? <h2>Loading...</h2> : renderedTeachers}
         </ul>
         {filteredTeachers.length > loadedTeachersCount && (
           <div className="ButtonLoadMoreContainer">

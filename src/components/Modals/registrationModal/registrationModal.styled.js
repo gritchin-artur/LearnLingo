@@ -5,8 +5,7 @@ import eye_off from "../../../img/eye-off.svg";
 export const ModalContainer = styled.div`
   position: relative;
   border-radius: 30px;
-  width: 565px;
-  height: 599px;
+  max-width: 565px;
   padding: 64px;
   box-sizing: border-box;
 

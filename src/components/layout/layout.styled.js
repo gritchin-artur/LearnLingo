@@ -5,17 +5,21 @@ export const MainContainer = styled.div`
   justify-content: space-between;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 
   .Header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 64px;
-    padding-right: 64px;
     margin-top: 24px;
     margin-bottom: 24px;
 
     flex-wrap: wrap;
+
+    @media only screen and (min-width: 768px) {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
   }
 
   .UserDiv {
@@ -131,9 +135,15 @@ export const MainContainer = styled.div`
   }
 
   .BurgerMenu {
+    @media only screen and (max-width: 768px) {
+      width: 26px;
+      height: 26px;
+    }
+
     @media only screen and (max-width: 1000px) {
       display: block;
     }
+
     display: none;
   }
 `;
